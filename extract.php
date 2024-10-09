@@ -37,11 +37,15 @@ function fetchParkingData() {
 // Ruft die Parkdaten ab und gibt sie aus, wenn dieses Skript ausgeführt wird
 $data = fetchParkingData();
 
-if ($data) {
+
+/*if ($data) {
     echo '<pre>';
     print_r($data); // Ausgabe der Daten zu Testzwecken, um die Struktur zu sehen
     echo '</pre>';
 } else {
     echo 'Es wurden keine gültigen Daten von der API erhalten.';
-}
+}*/
+
+return $data; // Gibt die Parkdaten zurück
+
 ?>
