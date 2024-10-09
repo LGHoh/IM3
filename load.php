@@ -1,6 +1,6 @@
 <?php
 // DB-Verbindungsdaten aus externer Datei laden
-require_once '../config.php';
+require_once 'config.php';
 
 // ------------------------------------------
 // Die Daten aus dem POST-Request werden in der Variablen $item gespeichert.
