@@ -11,3 +11,7 @@ try {
     // Wenn die Verbindung fehlschlägt, den Fehler anzeigen
     echo "Verbindung fehlgeschlagen: " . $e->getMessage();
 }
+
+
+echo '<pre>' . htmlspecialchars($response) . '</pre>';
+
