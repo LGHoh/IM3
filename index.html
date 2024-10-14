@@ -3,44 +3,87 @@
   <head>
     <meta charset="utf-8" />
     <title>Parkhaus-Management mit API-Daten</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="CSS/Style.css" />
   </head>
+
+  <header>
+    <nav role="navigation">
+      <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+        
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+        <span></span>
+        <span></span>
+        <span></span>
+        
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu">
+          <a href="#"><li>Druschnittliche Belegung</li></a>
+          <a href="#"><li>Parking Diagramm</li></a>
+          <a href="#"><li>Wo hat es platz?</li></a>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <body>
-    <h1>Parkhaus-Management System</h1>
+    <h2 class="überschrift">Parking Diagram – Datenbank</h1>
 
-    <div id="output"></div>
+        <div id="output"></div>
 
-    <!-- Abfrage eines Parkhaus-Datensatzes mit park_id -->
-    <form method="POST" action="unload.php" id="idSearch">
-      <input type="text" name="park_id" placeholder="Parkhaus-ID" />
-      <button type="submit" name="read">Parkhaus-Datensatz finden</button>
-    </form>
+        <!-- Abfrage eines Parkhaus-Datensatzes mit park_id -->
+        <form method="POST" action="unload.php" id="idSearch">
+          <input type="text" name="park_id" placeholder="Parkhaus-ID" />
+          <button type="submit" name="read">Parkhaus-Datensatz finden</button>
+        </form>
 
-    <!-- Abfrage aller Parkhäuser, die den Namen enthalten -->
-    <form method="POST" action="unload.php" id="stringSearch">
-      <input type="text" name="string" placeholder="Parkhausname" />
-      <button type="submit" name="search">Parkhäuser durchsuchen</button>
-    </form>
+        <!-- Abfrage aller Parkhäuser, die den Namen enthalten -->
+        <form method="POST" action="unload.php" id="stringSearch">
+          <input type="text" name="string" placeholder="Parkhausname" />
+          <button type="submit" name="search">Parkhäuser durchsuchen</button>
+        </form>
 
-    <!-- Einfügen eines neuen variablen Parkhaus-Datensatzes -->
-    <form method="POST" action="load.php" id="insertVariable">
-      <input type="text" name="park_id" placeholder="Parkhaus-ID" />
-      <input type="text" name="state" placeholder="Status (z.B. open, closed)" />
-      <input type="number" name="free" placeholder="Freie Parkplätze" />
-      <button type="submit" name="insert">Neuen variablen Datensatz einfügen</button>
-    </form>
+        <!-- Einfügen eines neuen variablen Parkhaus-Datensatzes -->
+        <form method="POST" action="load.php" id="insertVariable">
+          <input type="text" name="park_id" placeholder="Parkhaus-ID" />
+          <input type="text" name="state" placeholder="Status (z.B. open, closed)" />
+          <input type="number" name="free" placeholder="Freie Parkplätze" />
+          <button type="submit" name="insert">Neuen variablen Datensatz einfügen</button>
+        </form>
 
-    <!-- Einfügen eines neuen stationären Parkhaus-Datensatzes -->
-    <form method="POST" action="load.php" id="insertStationary">
-      <input type="text" name="id" placeholder="Parkhaus-ID" />
-      <input type="text" name="name" placeholder="Parkhausname" />
-      <input type="text" name="lat" placeholder="Breitengrad (Latitude)" />
-      <input type="text" name="lng" placeholder="Längengrad (Longitude)" />
-      <input type="number" name="lot_type" placeholder="Typ des Parkhauses" />
-      <input type="number" name="total" placeholder="Gesamtkapazität" />
-      <input type="text" name="address" placeholder="Adresse des Parkhauses" />
-      <button type="submit" name="insert_stationary">Neuen stationären Datensatz einfügen</button>
-    </form>
+        <!-- Einfügen eines neuen stationären Parkhaus-Datensatzes -->
+        <form method="POST" action="load.php" id="insertStationary">
+          <input type="text" name="id" placeholder="Parkhaus-ID" />
+          <input type="text" name="name" placeholder="Parkhausname" />
+          <input type="text" name="lat" placeholder="Breitengrad (Latitude)" />
+          <input type="text" name="lng" placeholder="Längengrad (Longitude)" />
+          <input type="number" name="lot_type" placeholder="Typ des Parkhauses" />
+          <input type="number" name="total" placeholder="Gesamtkapazität" />
+          <input type="text" name="address" placeholder="Adresse des Parkhauses" />
+          <button type="submit" name="insert_stationary">Neuen stationären Datensatz einfügen</button>
+        </form>
+
+    <!-- Test für Buttondefinition-->
+<button> Tag </button>
+<button> Woche </button>
+<button> Monat </button>
+<button> Jahr </button>
+<button> Max </button>
+
+
+<h2 class="überschrift">Momentane Auslastung</h1>
+
 
     <script src="../js/script.js"></script>
   </body>
