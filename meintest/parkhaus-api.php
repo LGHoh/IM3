@@ -1,4 +1,3 @@
-
 <?php
 
 // Datenbankkonfiguration einbinden
@@ -20,25 +19,49 @@ if (empty($park_id)) {
     exit;
 }
 
+// Zeitrahmen (Tag oder Woche) aus der URL holen
+$timeframe = isset($_GET['timeframe']) ? $_GET['timeframe'] : 'day'; // Standard: Tagesansicht
+
 try {
-    // Erstellt eine neue PDO-Instanz mit der Konfiguration aus config.php
     $pdo = new PDO($dsn, $username, $password, $options);
 
-    // SQL-Query, um die durchschnittliche Auslastung pro Stunde zu berechnen
-    // Wir führen eine JOIN-Abfrage mit der Tabelle ParkhausStationaer durch, um die Gesamtkapazität zu erhalten
-    $sql = "
-        SELECT 
-            HOUR(pv.timestamp) AS hour,
-            AVG(pv.free) AS avg_free,
-            ps.total AS total_capacity,
-            (ps.total - AVG(pv.free)) AS avg_occupied,
-            ((ps.total - AVG(pv.free)) / ps.total) * 100 AS avg_utilization
-        FROM ParkhausVariabel pv
-        JOIN ParkhausStationaer ps ON pv.park_id = ps.id  -- Verknüpfe die beiden Tabellen anhand der Parkhaus-ID
-        WHERE pv.park_id = ?   -- Filtert nach der Parkhaus-ID
-        GROUP BY HOUR(pv.timestamp), ps.total
-        ORDER BY hour ASC
-    ";
+    // SQL-Query für Tagesansicht (letzte 24 Stunden ohne Aggregation)
+    if ($timeframe == 'day') {
+        $sql = "
+            SELECT 
+                HOUR(pv.timestamp) AS hour,
+                pv.free,
+                ps.total AS total_capacity,
+                (ps.total - pv.free) AS occupied,
+                ((ps.total - pv.free) / ps.total) * 100 AS utilization,
+                pv.timestamp
+            FROM ParkhausVariabel pv
+            JOIN ParkhausStationaer ps ON pv.park_id = ps.id
+            WHERE pv.park_id = ?
+              AND pv.timestamp >= NOW() - INTERVAL 24 HOUR
+            ORDER BY pv.timestamp ASC
+        ";
+    } 
+    
+    
+    // SQL-Query für Wochenansicht (letzte 7 Tage ohne Aggregation)
+    else if ($timeframe == 'week') {
+        $sql = "
+            SELECT 
+                DATE_FORMAT(pv.timestamp, '%Y-%m-%d %H:00:00') AS dayhour,
+                pv.free,
+                ps.total AS total_capacity,
+                (ps.total - pv.free) AS occupied,
+                ((ps.total - pv.free) / ps.total) * 100 AS utilization,
+                pv.timestamp
+            FROM ParkhausVariabel pv
+            JOIN ParkhausStationaer ps ON pv.park_id = ps.id
+            WHERE pv.park_id = ?
+              AND pv.timestamp >= NOW() - INTERVAL 3 DAY
+            ORDER BY pv.timestamp ASC
+        ";
+    }
+    
 
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
@@ -51,15 +74,12 @@ try {
 
     // Überprüfen, ob Ergebnisse gefunden wurden
     if ($results) {
-        // Gibt die Ergebnisse im JSON-Format zurück
         echo json_encode($results);
     } else {
-        // Keine Daten gefunden
         echo json_encode(['error' => 'Keine Daten für das angegebene Parkhaus gefunden.']);
     }
 
 } catch (PDOException $e) {
-    // Gibt eine Fehlermeldung zurück, wenn etwas schiefgeht
     echo json_encode(['error' => $e->getMessage()]);
 }
 ?>
