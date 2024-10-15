@@ -6,74 +6,40 @@
     <link rel="stylesheet" href="CSS/Style.css" />
   </head>
 
-  <header>
-    <nav role="navigation">
-      <div id="menuToggle">
-        <!--
-        A fake / hidden checkbox is used as click reciever,
-        so you can use the :checked selector on it.
-        -->
-        <input type="checkbox" />
-        
-        <!--
-        Some spans to act as a hamburger.
-        
-        They are acting like a real hamburger,
-        not that McDonalds stuff.
-        -->
-        <span></span>
-        <span></span>
-        <span></span>
-        
-        <!--
-        Too bad the menu has to be inside of the button
-        but hey, it's pure CSS magic.
-        -->
-        <ul id="menu">
-          <a href="#"><li>Druschnittliche Belegung</li></a>
-          <a href="#"><li>Parking Diagramm</li></a>
-          <a href="#"><li>Wo hat es platz?</li></a>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <header class="menu">
+  
+    <img src="Logo/Peakendsvg.svg" alt="Logo von Peakend">
+    <h2>Zürich</h2>
+
+    <!-- Navigation 
+ <nav class="navbar">
+  <ul>
+    <li><a href="#section1">Parking Diagramm</a></li>
+    <li><a href="#section2">Parking Diagramm</a></li>
+  </ul>
+</nav>
+
+</section>
+-->
+    </header>
+
   <body>
-    <h2 class="überschrift">Parking Diagram – Datenbank</h1>
+    <div class="nachrichten">
+      <div class="contentlinks">
+      <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit Du schon vorher anreisen kannst, um einen Platz zu finden.</p>
+    </div>
 
-        <div id="output"></div>
+    <div class="contentrechts">
+      <p>Peakend zeigt dir die Auslastung der Park
+    </div>
+  </div>
 
-        <!-- Abfrage eines Parkhaus-Datensatzes mit park_id -->
-        <form method="POST" action="unload.php" id="idSearch">
-          <input type="text" name="park_id" placeholder="Parkhaus-ID" />
-          <button type="submit" name="read">Parkhaus-Datensatz finden</button>
-        </form>
 
-        <!-- Abfrage aller Parkhäuser, die den Namen enthalten -->
-        <form method="POST" action="unload.php" id="stringSearch">
-          <input type="text" name="string" placeholder="Parkhausname" />
-          <button type="submit" name="search">Parkhäuser durchsuchen</button>
-        </form>
 
-        <!-- Einfügen eines neuen variablen Parkhaus-Datensatzes -->
-        <form method="POST" action="load.php" id="insertVariable">
-          <input type="text" name="park_id" placeholder="Parkhaus-ID" />
-          <input type="text" name="state" placeholder="Status (z.B. open, closed)" />
-          <input type="number" name="free" placeholder="Freie Parkplätze" />
-          <button type="submit" name="insert">Neuen variablen Datensatz einfügen</button>
-        </form>
-
-        <!-- Einfügen eines neuen stationären Parkhaus-Datensatzes -->
-        <form method="POST" action="load.php" id="insertStationary">
-          <input type="text" name="id" placeholder="Parkhaus-ID" />
-          <input type="text" name="name" placeholder="Parkhausname" />
-          <input type="text" name="lat" placeholder="Breitengrad (Latitude)" />
-          <input type="text" name="lng" placeholder="Längengrad (Longitude)" />
-          <input type="number" name="lot_type" placeholder="Typ des Parkhauses" />
-          <input type="number" name="total" placeholder="Gesamtkapazität" />
-          <input type="text" name="address" placeholder="Adresse des Parkhauses" />
-          <button type="submit" name="insert_stationary">Neuen stationären Datensatz einfügen</button>
-        </form>
-
+<section id="section1" class="section">
+  <h2>Parking Diagramm</h2>
+  <p>Inhalt für den Bereich "Parking Diagramm".</p>
+</section>
     <!-- Test für Buttondefinition-->
 <button> Tag </button>
 <button> Woche </button>
@@ -82,7 +48,14 @@
 <button> Max </button>
 
 
-<h2 class="überschrift">Momentane Auslastung</h1>
+<!-- Sections -->
+
+
+<section id="section2" class="section">
+  <h1>Momentane Auslastung</h1>
+  <p>Inhalt für den Bereich "Momentane Auslastung".</p>
+</section>
+
 
 
     <script src="../js/script.js"></script>
