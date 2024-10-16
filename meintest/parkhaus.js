@@ -11,63 +11,63 @@ const data = {
     labels: dayLabels, // Start mit Tagesansicht
     datasets: [
         {
-            label: 'Auslastung Hard (%)',
+            label: 'Auslastung Hard',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(54, 162, 235, 1)', // Blau
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Centereleven (%)',
+            label: 'Auslastung Uszsued',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(255, 99, 132, 1)', // Rot
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Uni Irchel (%)',
+            label: 'Auslastung Uni Irchel',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(75, 192, 192, 1)', // Grün
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung West (%)',
+            label: 'Auslastung Haustalgarten',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(153, 102, 255, 1)', // Lila
             backgroundColor: 'rgba(153, 102, 255, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung City Parking (%)',
+            label: 'Auslastung Opéra',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(255, 206, 86, 1)', // Gelb
             backgroundColor: 'rgba(255, 206, 86, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Urania (%)',
+            label: 'Auslastung Urania',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(54, 162, 235, 1)', // Blau
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Hohe Promenade (%)',
+            label: 'Auslastung Parkside',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(255, 159, 64, 1)', // Orange
             backgroundColor: 'rgba(255, 159, 64, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Crowne Plaza (%)',
+            label: 'Auslastung Helvetiaplatz',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(199, 199, 199, 1)', // Grau
             backgroundColor: 'rgba(199, 199, 199, 0.2)',
             fill: false
         },
         {
-            label: 'Auslastung Haus Feldegg (%)',
+            label: 'Auslastung jelmoli',
             data: [], // Hier kommen die API-Daten rein
             borderColor: 'rgba(75, 192, 192, 1)', // Grün
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -181,29 +181,29 @@ async function loadData(timeframe) {
     const p_hard = await getOneParkhausData("zuerichparkhaushardauii", timeframe);
     parkhausAuslastungChart.data.datasets[0].data = p_hard;
 
-    const p_centereleven = await getOneParkhausData("zuerichparkhauscentereleven", timeframe);
-    parkhausAuslastungChart.data.datasets[1].data = p_centereleven;
+    const p_uszsued = await getOneParkhausData("zuerichparkplatzuszsued", timeframe);
+    parkhausAuslastungChart.data.datasets[1].data = p_uszsued;
 
     const p_uniirchel = await getOneParkhausData("zuerichparkhausuniirchel", timeframe);
     parkhausAuslastungChart.data.datasets[2].data = p_uniirchel;
 
-    const p_west = await getOneParkhausData("zuerichparkhauspwest", timeframe);
-    parkhausAuslastungChart.data.datasets[3].data = p_west;
+    const p_haustalgarten = await getOneParkhausData("zuerichparkhaustalgarten", timeframe);
+    parkhausAuslastungChart.data.datasets[3].data = p_haustalgarten;
 
-    const p_cityparking = await getOneParkhausData("zuerichparkhauscityparking", timeframe);
-    parkhausAuslastungChart.data.datasets[4].data = p_cityparking;
+    const p_opéra = await getOneParkhausData("zuerichparkhausopéra", timeframe);
+    parkhausAuslastungChart.data.datasets[4].data = p_opéra;
 
     const p_urania = await getOneParkhausData("zuerichparkhausurania", timeframe);
     parkhausAuslastungChart.data.datasets[5].data = p_urania;
 
-    const p_hohepromenade = await getOneParkhausData("zuerichparkhaushohepromenade", timeframe);
-    parkhausAuslastungChart.data.datasets[6].data = p_hohepromenade;
+    const p_parkside = await getOneParkhausData("zuerichparkhausparkside", timeframe);
+    parkhausAuslastungChart.data.datasets[6].data = p_parkside;
 
-    const p_crowneplaza = await getOneParkhausData("zuerichparkhauscrowneplaza", timeframe);
-    parkhausAuslastungChart.data.datasets[7].data = p_crowneplaza;
+    const p_helvetiaplatz = await getOneParkhausData("zuerichparkhaushelvetiaplatz", timeframe);
+    parkhausAuslastungChart.data.datasets[7].data = p_helvetiaplatz;
 
-    const p_hausfeldegg = await getOneParkhausData("zuerichparkhausfeldegg", timeframe);
-    parkhausAuslastungChart.data.datasets[8].data = p_hausfeldegg;
+    const p_jelmoli = await getOneParkhausData("zuerichparkhausjelmoli", timeframe);
+    parkhausAuslastungChart.data.datasets[8].data = p_jelmoli;
 
     parkhausAuslastungChart.update();
 }
