@@ -122,7 +122,7 @@ input{
   padding: 20px; */
 
 
-  
+
 /* ---------------------Responsiveness---------------------------- */
 @media (max-width: 768px) {
 
@@ -188,7 +188,7 @@ padding-right: 1rem;
 }
 .menu h2 {
   color: var(--Sonne);
-  padding-top:
+  padding-top: 1rem; /* Added value for padding-top */
 }
 
 /* ------------------------------ID---------------------*/
