@@ -45,7 +45,7 @@ try {
     
     
     // SQL-Query für Wochenansicht (letzte 7 Tage ohne Aggregation)
-    else if ($timeframe == 'week') {
+    else if ($timeframe == '72h') {
         $sql = "
             SELECT 
                 DATE_FORMAT(pv.timestamp, '%Y-%m-%d %H:00:00') AS dayhour,

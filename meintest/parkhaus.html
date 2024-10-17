@@ -8,34 +8,33 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-  <body>
-      <header class="menu">
+<body>
+    <header class="menu">
         <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
         <h2>Zürich</h2>
-      </header>
-  <!-- Chart Container -->
-      <section id="sectiontop" class="section">
+    </header>
+    
+    <!-- Chart Container -->
+    <section id="sectiontop" class="section">
         <!-- Nachrichtenteil -->
         <div class="nachrichten">
-
-          <div class="contentTitel">
-            <h2>Auslastung </h2>
-          </div>
-          
-            <div class="contentText">
-              <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit Du schon vorher anreisen kannst, um einen Platz zu finden.</p>
+            <div class="contentTitel">
+                <h2>Auslastung</h2>
             </div>
-
-           
+            <div class="contentText">
+                <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit Du schon vorher anreisen kannst, um einen Platz zu finden.</p>
+            </div>
         </div>
-     </section>
+    </section>
+    
     <!-- Chart Container -->
     <div class="chart-container">
         <button id="btnDay">Letzte 24h</button>
         <button id="btnWeek">Letzte 72h</button>
         <canvas id="parkhausAuslastungChart"></canvas>
     </div>
+    
+    <!-- Platzieren Sie das Script am Ende des <body>, damit der DOM vollständig geladen ist -->
     <script src="parkhaus.js"></script>
-  </body>
-
+</body>
 </html>
