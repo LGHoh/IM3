@@ -339,3 +339,8 @@ input {
   margin-top: 15px;
   font-size: 0.9rem;
 }
+
+
+#interpretation-container {
+  background-color: var(--Nacht); /* Nutze eine passende Hintergrundfarbe */
+  color: var(--Sonne); /* Weiß oder eine Farbe, die besser lesbar ist */
