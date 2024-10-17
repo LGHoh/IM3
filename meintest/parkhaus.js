@@ -123,17 +123,18 @@ const config = {
         maintainAspectRatio: false, // Verhältnis nicht beibehalten, damit das Diagramm sich an den Container anpasst
         plugins: {
             legend: {
-                position: 'top',
+                position: 'right',
                 labels: {
+                    padding: 50,  // Abstand zwischen den Legendenpunkten erhöhen
                     color: 'white',  // Farbe der Legende auf Weiß setzen
                     usePointStyle: true  // Verwende Punkte statt Rechtecke in der Legende
                 }
             },
-            title: {
-                display: true,
-                text: 'Stündliche Auslastung für das Parkhaus',
-                color: 'white'  // Farbe des Titels auf Weiß setzen
-            },
+                // title: {
+                //display: true,
+               //text: 'Parkhaus Auslastung',
+                //color: 'white'  // Farbe des Titels auf Weiß setzen
+          //  },
             tooltip: {
                 callbacks: {
                     label: function (context) {

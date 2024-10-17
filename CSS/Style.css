@@ -105,13 +105,7 @@ header img {
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
   border: 1px solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
-<<<<<<< HEAD
-  max-width: 90%;
-  max-height: 70%;
-  margin: 0 auto;
-  box-sizing: border-box;
-=======
->>>>>>> 41b5fabee974ed556ae9cc191585c618864b000d
+  max-height: 70vh;
 }
 
 /* Responsive Chart Canvas */
@@ -338,4 +332,11 @@ input {
 .footer-bottom {
   margin-top: 15px;
   font-size: 0.9rem;
+}
+
+.legendenButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  border: 3px solid red;
 }
