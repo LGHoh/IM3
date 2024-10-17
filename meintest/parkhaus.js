@@ -120,32 +120,25 @@ const config = {
     data: data,
     options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        aspectRatio: 2, // Optional: defines the width-to-height ratio
         plugins: {
             legend: {
-                position: 'right',
+                position: 'top', // You can change this to 'bottom', 'left', etc.
                 labels: {
-                    padding: 15,  // Abstand zwischen den Legendenpunkten erhöhen
-                    color: 'white',  // Farbe der Legende auf Weiß setzen
-                    usePointStyle: true  // Verwende Punkte statt Rechtecke in der Legende
+                    color: 'white',
+                    usePointStyle: true
                 }
             },
-                // title: {
-                //display: true,
-               //text: 'Parkhaus Auslastung',
-                //color: 'white'  // Farbe des Titels auf Weiß setzen
-          //  },
             tooltip: {
                 callbacks: {
                     label: function (context) {
                         const dataset = context.dataset;
-                        const parkhausName = dataset.label; // Holt den Namen des Parkhauses
                         const utilization = parseFloat(context.parsed.y).toFixed(1);
                         const maxPlaces = maxCapacity[dataset.parkhausId];
                         const freePlaces = maxPlaces - Math.round((utilization / 100) * maxPlaces);
-
                         return [
-                            `Parkhaus: ${parkhausName}`,  // Fügt den Namen des Parkhauses hinzu
+                            `Parkhaus: ${dataset.label}`,
                             `${utilization}%`,
                             `Freie Plätze: ${freePlaces}`,
                             `Maximale Plätze: ${maxPlaces}`
@@ -161,14 +154,14 @@ const config = {
                     text: 'Auslastung (%)',
                     color: 'white'
                 },
+                beginAtZero: true,
+                max: 100,
                 ticks: {
                     color: 'rgba(200, 200, 200, 0.8)'
                 },
                 grid: {
                     color: 'rgba(200, 200, 200, 0.3)',
-                },
-                beginAtZero: true,
-                max: 100
+                }
             },
             x: {
                 title: {
@@ -201,6 +194,26 @@ const parkhausAuslastungChart = new Chart(
     document.getElementById('parkhausAuslastungChart'),
     config
 );
+
+// Event-Listener zur Anpassung der Legende und Chart-Optionen bei Größenänderung
+window.addEventListener('resize', () => {
+    parkhausAuslastungChart.options.plugins.legend.position = window.innerWidth < 768 ? 'top' : 'right';
+    parkhausAuslastungChart.options.elements.point.radius = window.innerWidth < 768 ? 3 : 5;
+    parkhausAuslastungChart.options.plugins.legend.labels.padding = window.innerWidth < 768 ? 5 : 15;
+    parkhausAuslastungChart.options.scales.x.ticks.maxTicksLimit = window.innerWidth < 768 ? 6 : 12;
+    parkhausAuslastungChart.update();
+});
+
+// Event-Listener zur Anpassung der Chart-Größe vor und nach dem Drucken
+window.addEventListener('beforeprint', () => {
+    parkhausAuslastungChart.resize(600, 600); // Temporär anpassen, damit es im Druck besser aussieht
+});
+
+window.addEventListener('afterprint', () => {
+    parkhausAuslastungChart.resize(); // Zurück zur normalen Größe nach dem Druck
+});
+
+
 
 // Funktion zum Abrufen der Parkhausdaten
 async function getOneParkhausData(parkhausId, timeframe = 'day') {
