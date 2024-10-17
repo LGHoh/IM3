@@ -107,7 +107,6 @@ header img {
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
   border: 1px solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
-  padding: 3rem 7rem 3rem 7rem;
 }
 
 /* Responsive Chart Canvas */
