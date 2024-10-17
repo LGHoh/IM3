@@ -75,8 +75,6 @@ const data = {
         }
     ]
 };
-
-// Konfiguration des Charts
 const config = {
     type: 'line',
     data: data,
@@ -85,17 +83,29 @@ const config = {
         plugins: {
             legend: {
                 position: 'top',
+                labels: {
+                    color: 'white',  // Farbe der Legende auf Weiß setzen
+                    usePointStyle: true  // Verwende Punkte statt Rechtecke in der Legende
+                }
             },
             title: {
                 display: true,
-                text: 'Stündliche Auslastung für das Parkhaus'
+                text: 'Stündliche Auslastung für das Parkhaus',
+                color: 'white'  // Farbe des Titels auf Weiß setzen
             }
         },
         scales: {
             y: {
                 title: {
                     display: true,
-                    text: 'Auslastung (%)'
+                    text: 'Auslastung (%)',
+                    color: 'white'  // Farbe des Achsentitels auf Weiß setzen
+                },
+                ticks: {
+                    color: 'rgba(200, 200, 200, 0.8)'  // Farbe der Y-Achsen-Beschriftungen auf ein helles Grau setzen
+                },
+                grid: {
+                    color: 'rgba(200, 200, 200, 0.3)',  // Gitternetzlinien in leichtem Grau mit reduzierter Deckkraft
                 },
                 beginAtZero: true,
                 max: 100
@@ -103,8 +113,22 @@ const config = {
             x: {
                 title: {
                     display: true,
-                    text: 'Stunden des Tages (1-24)'
+                    text: 'Stunden des Tages (1-24)',
+                    color: 'white'  // Farbe des Achsentitels auf Weiß setzen
+                },
+                ticks: {
+                    color: 'rgba(220, 220, 220, 1)'  // Farbe der X-Achsen-Beschriftungen auf ein etwas helleres Grau ohne Transparenz setzen
+                },
+                grid: {
+                    color: 'rgba(200, 200, 200, 0.3)',  // Gitternetzlinien in leichtem Grau mit reduzierter Deckkraft
                 }
+            }
+        },
+        elements: {
+            point: {
+                radius: 5,  // Setzt die Punktgröße für die Datenpunkte
+                backgroundColor: 'white',  // Hintergrundfarbe der Punkte auf Weiß setzen
+                borderColor: 'white'  // Randfarbe der Punkte auf Weiß setzen
             }
         }
     }
@@ -115,6 +139,9 @@ const parkhausAuslastungChart = new Chart(
     document.getElementById('parkhausAuslastungChart'),
     config
 );
+
+
+
 
 // Funktion zum Abrufen der Parkhausdaten
 async function getOneParkhausData(parkhausId, timeframe = 'day') {

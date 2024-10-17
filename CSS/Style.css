@@ -1,18 +1,16 @@
-
-
 :root {
-    /*DokumentFarben*/
+  /* DokumentFarben */
   --VerlauffarbeHellblau: #000426;
   --VerlauffarbeDunkelblau: #5A62BA;
 
-  /*GestaltungsFarben*/
-  --Sonne:#FFC745;
-  --Himmel:#0093ED;
+  /* GestaltungsFarben */
+  --Sonne: #FFC745;
+  --Himmel: #0093ED;
   --Nacht: #6C76E6;
   --Wald: #001E0E;
   --Ozean: #000426;
 
-    /*DiagrammFarben*/
+  /* DiagrammFarben */
   --dGrün: #39C16F;
   --dGelb: #FFC745;
   --dBraun: #C78B07;
@@ -20,7 +18,7 @@
   --dPaprika: #E74325;
   --dRot: #BD0000;
 
-  /*----------Schriftart------------*/
+  /* Schriftart */
   font-family: Krona One, sans-serif;
   color: white;
 }
@@ -28,60 +26,88 @@
 @font-face {
   font-family: 'Krona One';
   src: url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
-} 
+}
 
 h1 {
-    font-size: 4rem; /* Large and impactful for main titles */  
+  font-size: 4rem;
 }
-h2 { 
-  font-size: 1.6rem; /* Slightly smaller, but still prominent */
-}
-h3 {
-    font-size: 2rem; /* Medium heading size, good for sub-headings */
-}
-h4 {
-    font-size: 1.6rem; /* Lower-level heading, balanced for sections */
-}
-h5,p {
-    font-size: 1.4rem; /* More subtle, for subsections or categories */
-}
-h6, p {
-    font-size: 1.2rem; /* Smallest heading, used sparingly */
-}
- /*----------Schriftart Ende----------*/
 
- body, html {
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5, p {
+  font-size: 1.4rem;
+}
+
+h6, p {
+  font-size: 1.2rem;
+}
+
+body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
- body{
+body {
   background: linear-gradient(var(--VerlauffarbeHellblau), var(--VerlauffarbeDunkelblau)) no-repeat;
   min-height: 100vh;
   padding-left: 2.5%;
-  padding-right:2.5%;
+  padding-right: 2.5%;
   height: 100%;
 }
 
 header {
-  size: 50%;
   background-color: rgba(255, 255, 255, 0.2);
   height: 10vh;
   width: 100%;
-  padding: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2%;
 }
+
 header img {
   height: 5vh;
 }
-/* ------------------------------Buttons---------------------*/
+
+/* Responsive Chart */
+#parkhausAuslastungChart {
+  width: 100%;  /* Breite des Canvas auf 100% setzen */
+  max-width: 1000px;  /* Maximalbreite */
+  height: auto;  /* Höhe proportional zur Breite */
+  display: block;  /* Block-Element zur Vermeidung von Inline-Effekten */
+  margin: 20px auto;  /* Zentriert */
+  box-sizing: border-box;
+}
+
+/* Flexbox Container für den Chart */
+.chart-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* ------------------------------Buttons--------------------- */
 button {
   background-color: var(--Sonne);
   color: var(--Wald);
   border: none;
   padding: 0.7rem 0.6rem;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0.2rem;
   border-radius: 20px;
   cursor: pointer;
   font-size: 0.75rem;
@@ -89,49 +115,70 @@ button {
   transition: 0.2s;
   border: 1px solid var(--Sonne);
 }
+
 button:hover {
   border: 1px solid var(--Wald);
   background-color: #D2BE64;
-  
 }
+
 button:active {
-  background-color:#A7A28C;
-  border: var(--Wald);
+  background-color: #A7A28C;
   border: 1px solid var(--Wald);
 }
+
 button:focus {
   outline: 1px solid var(--Wald);
   border: 1px solid var(--Wald);
 }
-/* ------------------------------Buttons Ende--------------------*/
 
-/* ------------------------------Formulare---------------------*/
-input{
+/* ------------------------------Formulare--------------------- */
+input {
   padding: 0.3rem 1rem;
   margin-top: 0.5rem;
   border-radius: 1rem;
-  border-color:none;
-  border-style: none;
+  border: none;
 }
-/* ------------------------------Formulare Ende --------------------*/
 
-/* ------------------------------Navigation---------------------*/
-/*
-.section {
-  height: 100vh; Jede Section nimmt die volle Höhe des Viewports ein 
-  padding: 20px; */
+/* ------------------------------Navigation--------------------- */
+.menu h2 {
+  color: var(--Sonne);
+}
 
-
-  
 /* ---------------------Responsiveness---------------------------- */
 @media (max-width: 768px) {
+  h1 {
+      font-size: 2.5rem;
+  }
 
+  h2 {
+      font-size: 1.4rem;
+  }
+
+  h3 {
+      font-size: 1.8rem;
+  }
+
+  button {
+      font-size: 0.6rem;
+      padding: 0.5rem;
+  }
+
+  .nachrichten {
+      flex-direction: column;
+  }
+
+  .contentlinks, .contentrechts {
+      flex: 1;
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+
+  #parkhausAuslastungChart {
+      max-width: 100%;  /* Volle Breite bei kleineren Bildschirmen */
+  }
 }
 
-
-/* ------------------------------Navigation Ende---------------------*/
-
-/* ------------------------------Footer---------------------*/
+/* ------------------------------Footer--------------------- */
 footer {
   background-color: var(--Wald);
   color: var(--Sonne);
@@ -141,54 +188,39 @@ footer {
   bottom: 0;
   width: 100%;
 }
-/* ------------------------------Footer Ende---------------------*/
 
-/* ------------------------------Klassen---------------------*/
-
+/* ------------------------------Klassen--------------------- */
 .überschrift {
   text-align: left;
   color: white;
   background-color: var(--Nacht);
   border-radius: 1rem;
   border: 1px solid white;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
- 
+  padding: 1rem;
 }
 
 .nachrichten {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.contentlinks{
- background-color: white;
-border-radius: 1rem;
-opacity: 0.7;
-flex: 2;
-padding-right: 1rem;
+.contentlinks {
+  background-color: white;
+  border-radius: 1rem;
+  opacity: 0.7;
+  flex: 2;
+  padding: 1rem;
 }
-.contentrechts{
+
+.contentrechts {
   flex: 1;
   background-color: white;
   border-radius: 1rem;
-  
+  padding: 1rem;
 }
 
 .content {
   background-color: var(--Wald);
   opacity: 0.2;
 }
-
-.menu {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem; /* Added value for padding */
-}
-.menu h2 {
-  color: var(--Sonne);
-  padding-top:
-}
-
-/* ------------------------------ID---------------------*/
