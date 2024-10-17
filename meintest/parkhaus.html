@@ -9,40 +9,42 @@
 </head>
 
 <body>
-    <header class="menu">
-        <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
-        <h2>Zürich</h2>
-    </header>
-    
-    <!-- Chart Container -->
-    <section id="sectiontop" class="section">
-        <!-- Nachrichtenteil -->
-        <div class="nachrichten">
 
-          <div class="contentTitel">
-            <h2>Peakend Chart</h2>
-          </div>
-
-            <div class="contentText">
-              <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit Du schon vorher anreisen kannst, um einen Platz zu finden.</p>
-            </div>
-        </div>
-    </section>
+  <header class="menu">
+    <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
+    <h2>Plan like a Parking Pro</h2>
+    <h2>Zürich</h2>
+  </header>
+  
+  <!-- Content Wrapper to ensure content starts below header -->
+  <div class="content-wrapper">
+    <div class="nachrichten">
+      <div class="contentTitel">
+        <h2>Peakend Chart</h2>
+      </div>
+  
+      <div class="contentText">
+        <p>
+          Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit du schon vorher anreisen kannst, um einen Platz zu finden.
+        </p>
+      </div>
+    </div>
+  </div>
+  
     
     <!-- Chart Container -->
     <div class="chart-container">
-      <div class="legendenButtons">
-        <button id="btnDay">Letzte 24h</button>
-        <button id="btnWeek">Letzte 72h</button>
-      </div>
+        <div class="legendenButtons">
+          <button id="btnDay">Letzte 24h</button>
+          <button id="btnWeek">Letzte 72h</button>
+        </div>
        <canvas id="parkhausAuslastungChart"></canvas> 
-    </div>
+     </div>
 
     <!-- Interpretation Container -->
     <div id="interpretation-container"></div>
 
     
-    <!-- Platzieren Sie das Script am Ende des <body>, damit der DOM vollständig geladen ist -->
     <script src="parkhaus.js"></script>
 
 
@@ -51,14 +53,6 @@
   <div class="footer-container">
       <div class="footer-logo">
           <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
-      </div>
-      <div class="footer-links">
-          <ul>
-              <li><a href="#impressum">Impressum</a></li>
-              <li><a href="#datenschutz">Datenschutz</a></li>
-              <li><a href="#kontakt">Kontakt</a></li>
-              <li><a href="#faq">FAQ</a></li>
-          </ul>
       </div>
   </div>
   <div class="footer-bottom">

@@ -10,8 +10,9 @@
   --Wald: #001E0E;
   --Ozean: #000426;
 
- /* GestaltungsFarbenContentBoxen */
+  /* GestaltungsFarbenContentBoxen */
   --Dämmerung: #9F34BC;
+
   /* DiagrammFarben */
   --dGrün: #39C16F;
   --dGelb: #FFC745;
@@ -23,23 +24,31 @@
   /* Schriftart und Farbe */
   font-family: 'Poppins', sans-serif;
   color: white;
+}
 
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Schriftart importieren */
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Allgemeine Schriftgrößen */
 h1 {
   font-size: 4rem;
 }
+
 h2 {
   font-size: 1.6rem;
   font-weight: 400;
 }
+
 h3 {
   font-size: 2rem;
 }
+
 h4 {
   font-size: 1.6rem;
 }
@@ -52,35 +61,37 @@ h6, p {
   font-size: 1rem;
 }
 
+/* Allgemeine Layout-Einstellungen */
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  min-height: 100vh;
-  height: 100%;
-  padding-top: calc(1rem + 3rem); /* Accounts for header height to prevent content overlap */
 }
+
 
 body {
   background: linear-gradient(var(--VerlauffarbeHellblau), var(--VerlauffarbeDunkelblau)) no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensures body is at least the full height of the viewport */
+  padding-top: calc(1rem + 3rem); /* Prevent content overlap */
 }
 
-
-/* ------------------------------Footer--------------------- */
-
-footer {
-  background-color: var(--Wald);
-  color: var(--Sonne);
-  text-align: center;
-  padding: 1rem;
-  margin-top: auto; /* Pushes the footer to the bottom */
-  width: 100%;
+/* Sticky Header */
+.sticky-header {
+  background-color: rgb(10, 0, 52);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Full width for the header */
+  z-index: 99;
+  padding: 1rem 0;  /* Top and bottom padding for spacing */
+  border-bottom: 0.1rem solid var(--Himmel);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
+/* Header Styling */
 header {
   background-color: rgb(10, 0, 52);
   position: fixed;
@@ -90,197 +101,87 @@ header {
   z-index: 99;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem 1rem; /* Adjusted padding for consistency */
   border-bottom: 0.1rem solid var(--Himmel);
+  height: 80px; /* Set a specific height for the header */
+  box-sizing: border-box;
 }
 
 header img {
-  height: 5vh;
+  height: 50px;
+}
+
+header h2 {
+  color: var(--Sonne);
+  align-self: center; /* Vertically center the text in the header */
+}
+
+/* Add this CSS to ensure content flows below the header */
+.content-wrapper {
+  margin-top: 80px; /* Equal to the header height to prevent overlap */
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    align-items: center;
+    height: auto; /* Allow header height to adjust based on content */
+    padding: 1rem; /* Add some padding for better spacing */
+  }
+
+  header img {
+    height: 40px; /* Resize logo on smaller devices */
+  }
+
+  header h2 {
+    font-size: 1.4rem; /* Resize text for smaller screens */
+  }
 }
 
 /* Chart Container für bessere Steuerung des Diagramms */
 .chart-container {
-  width: 100%;
+  width: 100%;  /* Set to 100% to occupy full available width */
+  max-width: 80%;  /* Increased max-width for a broader appearance */
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
-  border: 1px solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
-  max-height: 70vh;
+  border: 0.3rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
 }
 
 /* Responsive Chart Canvas */
 #parkhausAuslastungChart {
-  width: 100%;  
-  height: 100%;  
+  width: 100%;  /* Set to 100% to match container's width */
+  height: 100%;  /* Set to 100% to match container's height */
 }
 
 
-
-/* ------------------------------Buttons--------------------- */
-button {
-  background-color: var(--Sonne);
-  color: var(--Wald);
-  border: none;
-  padding: 0.7rem 0.6rem;
-  margin: 0.5rem 0.2rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.75rem;
-  min-width: 50px;
-  transition: 0.2s;
-  border: 1px solid var(--Sonne);
+/* Interpretation Container */
+#interpretation-container {
+  background-color: var(--Nacht); /* Nutze eine passende Hintergrundfarbe */
+  color: var(--Sonne); /* Weiß oder eine Farbe, die besser lesbar ist */
+  padding: 15px;  /* Füge Padding hinzu, um den Text vom Rand fernzuhalten */
+  margin-top: 0;  /* Entferne unerwünschte Abstände oben */
+  margin-bottom: 0;  /* Entferne unerwünschte Abstände unten */
+  text-align: left; /* Text linksbündig für bessere Lesbarkeit */
+  box-sizing: border-box;
 }
 
-button:hover {
-  border: 1px solid var(--Wald);
-  background-color: #D2BE64;
-}
-
-button:active {
-  background-color: #A7A28C;
-  border: 1px solid var(--Wald);
-}
-
-button:focus {
-  outline: 1px solid var(--Wald);
-  border: 1px solid var(--Wald);
-}
-
-/* ------------------------------Formulare--------------------- */
-input {
-  padding: 0.3rem 1rem;
-  margin-top: 0.5rem;
-  border-radius: 1rem;
-  border: none;
-}
-
-/* ------------------------------Navigation--------------------- */
-.menu
-
-.menu h2 {
-  color: var(--Sonne);
-}
-
-
-/* ---------------------Responsiveness---------------------------- */
-@media (max-width: 768px) {
-  h1 {
-      font-size: 2.5rem;
-  }
-
-  h2 {
-      font-size: 1.4rem;
-  }
-
-  h3 {
-      font-size: 1.8rem;
-  }
-
-  button {
-      font-size: 0.6rem;
-      padding: 0.5rem;
-  }
-
-  .nachrichten {
-      flex-direction: column;
-  }
-
-  .contentlinks, .contentrechts {
-      flex: 1;
-      width: 100%;
-      margin-bottom: 1rem;
-  }
-
-  #parkhausAuslastungChart {
-      max-width: 100%;  /* Volle Breite bei kleineren Bildschirmen */
-  }
-
-  header {
-    flex-direction: column; /* Anpassen, damit Header auf kleinen Bildschirmen besser aussieht */
-    height: auto;
-    padding: 1rem;
-  }
-
-  header img {
-    height: 6vh; /* Größe des Logos anpassen, damit es nicht zu klein wird */
-  }
-
-  .chart-title h1 {
-    font-size: 2rem; /* Verkleinern des Diagramm-Titels für kleinere Bildschirme */
-  }
-
-  .buttons {
-    justify-content: center; /* Buttons zentrieren, um auf mobilen Geräten konsistent auszusehen */
-  }
-}
-
-/* ------------------------------Klassen--------------------- */
-.überschrift {
-  text-align: left;
-  color: white;
-  background-color: var(--Dämmerung);
-  border-radius: 1rem;
-  border: 1px solid white;
-  padding: 1rem;
-}
-
-.nachrichten {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.contentTitel {
-  background-color: rgba(159, 52, 188, 0.3);
-  border-radius: 0.7rem;
-  border: 0.2rem solid var(--Dämmerung); 
-  flex: 1;
-  justify-content: wrap;
-  text-align: center;
-  align-content: center;
-  line-height: auto;
-  margin-right: 1rem;
-
-}
-
-.contentText {
-  background-color: rgba(159, 52, 188, 0.3);
-  border: 0.2rem solid var(--Dämmerung); 
-  border-radius: 0.7rem;
-  padding: 1rem;
-  flex: 3;
-  justify-content: center;
-}
-
-.content {
+/* Footer Styling */
+footer {
   background-color: var(--Wald);
-  opacity: 0.2;
-}
-
-
-/* ------------------------------ID-------------------- */
-
-.parkhausAuslastungChart{
-  width: 100%;
-  height: 100%;
-}
-
-/* Footer Styling */
-/* Footer Styling */
-.footer {
-  background-color: var(--VerlauffarbeHellblau);  /* Verwendung deiner Farbvariablen für einen dunklen Hintergrund */
-  color: var(--Sonne);  /* Schriftfarbe passend zum Hintergrund */
-  padding: 20px 2.5%;
+  color: var(--Sonne);
   text-align: center;
-  margin-top: 30px;
+  padding: 1rem;
+  margin-top: auto; /* Pushes the footer to the bottom */
+  width: 100%;
 }
 
 .footer-container {
   display: flex;
   flex-direction: column; /* Ändere die Richtung auf Spalte */
   align-items: center; /* Zentriert die Elemente horizontal */
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
   padding: 10px 0;
 }
@@ -313,22 +214,171 @@ input {
   color: #D2BE64;  /* Helle Farbe für den Hover-Effekt */
 }
 
-
 .footer-bottom {
   margin-top: 15px;
   font-size: 0.9rem;
   text-align: center;
 }
 
+/* Buttons */
+button {
+  background-color: var(--Sonne);
+  color: var(--Wald);
+  border: none;
+  padding: 0.7rem 0.6rem;
+  margin: 0.5rem 0.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  min-width: 50px;
+  transition: 0.2s;
+  border: 1px solid var(--Sonne);
+}
+
+button:hover {
+  border: 1px solid var(--Wald);
+  background-color: #D2BE64;
+}
+
+button:active {
+  background-color: #A7A28C;
+  border: 1px solid var(--Wald);
+}
+
+button:focus {
+  outline: 1px solid var(--Wald);
+  border: 1px solid var(--Wald);
+}
+
+/* Formulare */
+input {
+  padding: 0.3rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+}
+
+/* Klassen */
+.überschrift {
+  text-align: left;
+  color: white;
+  background-color: var(--Dämmerung);
+  border-radius: 1rem;
+  border: 1px solid white;
+  padding: 1rem;
+}
+
+/* Container for Nachrichten */
+.nachrichten {
+  display: flex;
+  justify-content: space-between; /* Make sure there is space between title and text on wide screens */
+  flex-wrap: wrap; /* Allow the children to wrap when space is constrained */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 20px; /* Add some space between title and text on wide screens */
+}
+
+/* Container für Nachrichten */
+.nachrichten {
+  display: flex;
+  justify-content: space-between; /* Platz zwischen Titel und Text auf großen Bildschirmen */
+  flex-wrap: wrap; /* Kinder-Elemente dürfen umbrechen, wenn der Platz begrenzt ist */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 20px; /* Abstand zwischen Titel und Text auf großen Bildschirmen */
+  padding-left: 1rem; /* Füge einen Abstand links hinzu */
+  padding-right: 1rem; /* Füge einen Abstand rechts hinzu */
+}
+
+/* Titel-Box */
+.contentTitel {
+  background-color: rgba(159, 52, 188, 0.3);
+  border-radius: 0.7rem;
+  border: 0.2rem solid var(--Dämmerung);
+  flex: 1 1 30%; /* Flex-Eigenschaften für Responsive Verhalten */
+  text-align: center;
+  align-content: center;
+  padding: 1rem;
+}
+
+/* Text-Box */
+.contentText {
+  background-color: rgba(159, 52, 188, 0.3);
+  border: 0.2rem solid var(--Dämmerung);
+  border-radius: 0.7rem;
+  padding: 1rem;
+  flex: 3 1 65%; /* Flex-Eigenschaften für Responsive Verhalten */
+  justify-content: center;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .nachrichten {
+    flex-direction: column; /* Stapel die Elemente vertikal auf schmalen Bildschirmen */
+    gap: 0; /* Entferne Abstand zwischen den Elementen, wenn gestapelt */
+    padding-left: 2rem; /* Erhöhe den Abstand links auf schmaleren Geräten */
+    padding-right: 2rem; /* Erhöhe den Abstand rechts auf schmaleren Geräten */
+  }
+
+  .contentTitel, .contentText {
+    flex: 1 1 100%; /* Volle Breite auf schmalen Bildschirmen */
+    margin-bottom: 1rem; /* Abstand zwischen den gestapelten Elementen */
+  }
+}
+
+
+
+/* ID Styles */
+.parkhausAuslastungChart {
+  width: 100%;
+  height: 100%;
+}
+
+/* Legenden Buttons */
 .legendenButtons {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  border: 3px solid red;
 }
 
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2.5rem;
+  }
 
-#interpretation-container {
-  background-color: var(--Nacht); /* Nutze eine passende Hintergrundfarbe */
-  color: var(--Sonne); /* Weiß oder eine Farbe, die besser lesbar ist */
+  h2 {
+      font-size: 1.4rem;
+  }
+
+  h3 {
+      font-size: 1.8rem;
+  }
+
+  button {
+      font-size: 0.6rem;
+      padding: 0.5rem;
+  }
+
+  #parkhausAuslastungChart {
+      max-width: 100%;  /* Volle Breite bei kleineren Bildschirmen */
+  }
+
+  header {
+    flex-direction: column; /* Anpassen, damit Header auf kleinen Bildschirmen besser aussieht */
+    height: auto;
+    padding: 1rem;
+  }
+
+  header img {
+    height: 6vh; /* Größe des Logos anpassen, damit es nicht zu klein wird */
+  }
+
+  .chart-title h1 {
+    font-size: 2rem; /* Verkleinern des Diagramm-Titels für kleinere Bildschirme */
+  }
+
+  .buttons {
+    justify-content: center; /* Buttons zentrieren, um auf mobilen Geräten konsistent auszusehen */
+  }
 }
