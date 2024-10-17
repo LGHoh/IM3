@@ -120,12 +120,12 @@ const config = {
     data: data,
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        aspectRatio: 2, // Optional: defines the width-to-height ratio
+        maintainAspectRatio: false, // Kein festes Seitenverhältnis mehr
         plugins: {
             legend: {
-                position: 'top', // You can change this to 'bottom', 'left', etc.
+                position: window.innerWidth < 768 ? 'top' : 'right',
                 labels: {
+                    padding: window.innerWidth < 768 ? 5 : 15,  // Weniger Padding auf mobilen Geräten
                     color: 'white',
                     usePointStyle: true
                 }
@@ -134,11 +134,13 @@ const config = {
                 callbacks: {
                     label: function (context) {
                         const dataset = context.dataset;
+                        const parkhausName = dataset.label;
                         const utilization = parseFloat(context.parsed.y).toFixed(1);
                         const maxPlaces = maxCapacity[dataset.parkhausId];
                         const freePlaces = maxPlaces - Math.round((utilization / 100) * maxPlaces);
+
                         return [
-                            `Parkhaus: ${dataset.label}`,
+                            `Parkhaus: ${parkhausName}`,
                             `${utilization}%`,
                             `Freie Plätze: ${freePlaces}`,
                             `Maximale Plätze: ${maxPlaces}`
@@ -154,14 +156,14 @@ const config = {
                     text: 'Auslastung (%)',
                     color: 'white'
                 },
-                beginAtZero: true,
-                max: 100,
                 ticks: {
                     color: 'rgba(200, 200, 200, 0.8)'
                 },
                 grid: {
                     color: 'rgba(200, 200, 200, 0.3)',
-                }
+                },
+                beginAtZero: true,
+                max: 100
             },
             x: {
                 title: {
@@ -172,7 +174,7 @@ const config = {
                 ticks: {
                     color: 'rgba(220, 220, 220, 1)',
                     autoSkip: true,
-                    maxTicksLimit: 12
+                    maxTicksLimit: 6  // Weniger Labels bei kleineren Bildschirmen
                 },
                 grid: {
                     color: 'rgba(200, 200, 200, 0.3)',
@@ -181,9 +183,17 @@ const config = {
         },
         elements: {
             point: {
-                radius: 5,
+                radius: window.innerWidth < 768 ? 2 : 5, // Kleinere Punkte auf mobilen Geräten
                 backgroundColor: 'white',
                 borderColor: 'white'
+            }
+        },
+        layout: {
+            padding: {
+                left: 10,
+                right: 10,
+                top: window.innerWidth < 768 ? 20 : 10, // Mehr Platz oben bei mobilen Geräten
+                bottom: 10
             }
         }
     }
@@ -195,22 +205,13 @@ const parkhausAuslastungChart = new Chart(
     config
 );
 
-// Event-Listener zur Anpassung der Legende und Chart-Optionen bei Größenänderung
+
+// Event-Listener zur Anpassung der Legende und Größenänderung des Charts
 window.addEventListener('resize', () => {
     parkhausAuslastungChart.options.plugins.legend.position = window.innerWidth < 768 ? 'top' : 'right';
-    parkhausAuslastungChart.options.elements.point.radius = window.innerWidth < 768 ? 3 : 5;
+    parkhausAuslastungChart.options.elements.point.radius = window.innerWidth < 768 ? 2 : 5;
     parkhausAuslastungChart.options.plugins.legend.labels.padding = window.innerWidth < 768 ? 5 : 15;
-    parkhausAuslastungChart.options.scales.x.ticks.maxTicksLimit = window.innerWidth < 768 ? 6 : 12;
     parkhausAuslastungChart.update();
-});
-
-// Event-Listener zur Anpassung der Chart-Größe vor und nach dem Drucken
-window.addEventListener('beforeprint', () => {
-    parkhausAuslastungChart.resize(600, 600); // Temporär anpassen, damit es im Druck besser aussieht
-});
-
-window.addEventListener('afterprint', () => {
-    parkhausAuslastungChart.resize(); // Zurück zur normalen Größe nach dem Druck
 });
 
 
