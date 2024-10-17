@@ -273,6 +273,7 @@ input {
 }
 
 /* Footer Styling */
+/* Footer Styling */
 .footer {
   background-color: var(--VerlauffarbeHellblau);  /* Verwendung deiner Farbvariablen für einen dunklen Hintergrund */
   color: var(--Sonne);  /* Schriftfarbe passend zum Hintergrund */
@@ -283,9 +284,8 @@ input {
 
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Ändere die Richtung auf Spalte */
+  align-items: center; /* Zentriert die Elemente horizontal */
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px 0;
@@ -293,17 +293,20 @@ input {
 
 .footer-logo img {
   height: 50px;
+  margin-bottom: 10px; /* Etwas Abstand unter dem Logo hinzufügen */
 }
 
 .footer-links ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;  /* Zeige die Links nebeneinander an */
+  gap: 20px;  /* Fügt Abstand zwischen den Links hinzu */
+  justify-content: center; /* Zentriert die Links */
 }
 
 .footer-links li {
-  display: inline;
-  margin: 0 10px;
+  margin: 0; /* Entferne vorherige linke und rechte Abstände */
 }
 
 .footer-links a {
@@ -316,29 +319,13 @@ input {
   color: #D2BE64;  /* Helle Farbe für den Hover-Effekt */
 }
 
-.footer-social {
-  display: flex;
-  gap: 10px;
-}
-
-.footer-social a {
-  display: inline-block;
-  transition: transform 0.3s;
-}
-
-.footer-social a:hover {
-  transform: scale(1.2);  /* Zoom-Effekt beim Hovern */
-}
-
-.social-icon {
-  width: 24px;
-  height: 24px;
-}
 
 .footer-bottom {
   margin-top: 15px;
   font-size: 0.9rem;
+  text-align: center;
 }
+
 
 
 #interpretation-container {
