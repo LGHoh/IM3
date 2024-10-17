@@ -120,12 +120,12 @@ const config = {
     data: data,
     options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
             legend: {
                 position: 'right',
                 labels: {
-                    padding: 50,  // Abstand zwischen den Legendenpunkten erhöhen
+                    padding: 15,  // Abstand zwischen den Legendenpunkten erhöhen
                     color: 'white',  // Farbe der Legende auf Weiß setzen
                     usePointStyle: true  // Verwende Punkte statt Rechtecke in der Legende
                 }
