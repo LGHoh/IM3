@@ -174,13 +174,18 @@ header h2 {
 
 /* Interpretation Container */
 #interpretation-container {
-  background-color: var(--Nacht); /* Nutze eine passende Hintergrundfarbe */
-  color: var(--Sonne); /* Weiß oder eine Farbe, die besser lesbar ist */
+  background-color: rgba(0, 0, 0, 0.1); /* Nutze eine passende Hintergrundfarbe */
   padding: 15px;  /* Füge Padding hinzu, um den Text vom Rand fernzuhalten */
   margin-top: 0;  /* Entferne unerwünschte Abstände oben */
   margin-bottom: 0;  /* Entferne unerwünschte Abstände unten */
-  text-align: left; /* Text linksbündig für bessere Lesbarkeit */
+  text-align:center; /* Text linksbündig für bessere Lesbarkeit */
   box-sizing: border-box;
+  margin-top: 3rem;
+  text-decoration: none;
+
+
+  border: 5px solid red;
+
 }
 
 /* Footer Styling */
@@ -316,8 +321,6 @@ input {
     margin-bottom: 1rem; /* Abstand zwischen den gestapelten Elementen */
   }
 }
-
-
 
 /* ID Styles */
 .parkhausAuslastungChart {
