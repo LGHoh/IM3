@@ -6,6 +6,23 @@ let allDataSets = [];
 const dayLabels = Array.from({ length: 24 }, (_, i) => i + 1);  // 1 bis 24 für die Tagesansicht
 const weekLabels = [];  // Dynamische Labels für die Wochenansicht
 
+// Funktion, um die Labels für die 72-Stunden-Ansicht zu generieren
+const generate72hLabels = () => {
+    const labels = [];
+    const now = new Date();
+
+    for (let i = 0; i < 72; i++) {
+        const current = new Date(now);
+        current.setHours(now.getHours() - (71 - i));
+
+        // Formatierung für bessere Lesbarkeit
+        const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+        labels.push(current.toLocaleDateString('de-DE', options));
+    }
+
+    return labels;
+};
+
 // Setup für die Daten (wird später mit API-Daten gefüllt)
 const data = {
     labels: dayLabels, // Start mit Tagesansicht
@@ -76,25 +93,25 @@ const data = {
     ]
 };
 
-
+// Chart Konfiguration
 const config = {
     type: 'line',
     data: data,
     options: {
         responsive: true,
-        maintainAspectRatio: false, // Verhältnis nicht beibehalten, damit das Diagramm sich an den Container anpasst
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
                 labels: {
-                    color: 'white',  // Farbe der Legende auf Weiß setzen
-                    usePointStyle: true  // Verwende Punkte statt Rechtecke in der Legende
+                    color: 'white',
+                    usePointStyle: true
                 }
             },
             title: {
                 display: true,
                 text: 'Stündliche Auslastung für das Parkhaus',
-                color: 'white'  // Farbe des Titels auf Weiß setzen
+                color: 'white'
             }
         },
         scales: {
@@ -102,13 +119,13 @@ const config = {
                 title: {
                     display: true,
                     text: 'Auslastung (%)',
-                    color: 'white'  // Farbe des Achsentitels auf Weiß setzen
+                    color: 'white'
                 },
                 ticks: {
-                    color: 'rgba(200, 200, 200, 0.8)'  // Farbe der Y-Achsen-Beschriftungen auf ein helles Grau setzen
+                    color: 'rgba(200, 200, 200, 0.8)'
                 },
                 grid: {
-                    color: 'rgba(200, 200, 200, 0.3)',  // Gitternetzlinien in leichtem Grau mit reduzierter Deckkraft
+                    color: 'rgba(200, 200, 200, 0.3)',
                 },
                 beginAtZero: true,
                 max: 100
@@ -116,22 +133,30 @@ const config = {
             x: {
                 title: {
                     display: true,
-                    text: 'Stunden des Tages (1-24)',
-                    color: 'white'  // Farbe des Achsentitels auf Weiß setzen
+                    text: 'Zeit',
+                    color: 'white'
                 },
                 ticks: {
-                    color: 'rgba(220, 220, 220, 1)'  // Farbe der X-Achsen-Beschriftungen auf ein etwas helleres Grau ohne Transparenz setzen
+                    color: 'rgba(220, 220, 220, 1)',
+                    maxRotation: 0, // Keine Neigung der Labels
+                    callback: function (value, index, values) {
+                        // Bei 72-Stunden-Ansicht: Labels besser formatieren
+                        if (values.length > 24 && index % 12 === 0) {
+                            return this.getLabelForValue(value); // Nur jede 12. Stunde zeigen (für 3-Tages-Ansicht)
+                        }
+                        return index % 24 === 0 ? this.getLabelForValue(value) : '';
+                    }
                 },
                 grid: {
-                    color: 'rgba(200, 200, 200, 0.3)',  // Gitternetzlinien in leichtem Grau mit reduzierter Deckkraft
+                    color: 'rgba(200, 200, 200, 0.3)',
                 }
             }
         },
         elements: {
             point: {
-                radius: 5,  // Setzt die Punktgröße für die Datenpunkte
-                backgroundColor: 'white',  // Hintergrundfarbe der Punkte auf Weiß setzen
-                borderColor: 'white'  // Randfarbe der Punkte auf Weiß setzen
+                radius: 5,
+                backgroundColor: 'white',
+                borderColor: 'white'
             }
         }
     }
@@ -142,9 +167,6 @@ const parkhausAuslastungChart = new Chart(
     document.getElementById('parkhausAuslastungChart'),
     config
 );
-
-
-
 
 // Funktion zum Abrufen der Parkhausdaten
 async function getOneParkhausData(parkhausId, timeframe = 'day') {
@@ -160,26 +182,12 @@ async function getOneParkhausData(parkhausId, timeframe = 'day') {
 
     // Für Tagesansicht (Stunden)
     if (timeframe === 'day') {
-        return data.map(entry => {
-            let utilization = parseFloat(entry.utilization);
-            return utilization >= 90 ? 100 : utilization;  // Setze auf 100% bei >= 90%
-        });
+        return data.map(entry => parseFloat(entry.utilization));
     }
 
-    // Für Wochenansicht (stündlich über 7 Tage)
-    if (timeframe === 'week') {
-        weekLabels.length = 0;  // Vorherige Labels löschen
-        data.forEach(entry => {
-            weekLabels.push(entry.dayhour);  // Stündliche Labels für 7 Tage
-        });
-
-        console.log('Week Labels:', weekLabels);  // Debugging: Ausgabe der Labels
-        console.log('Week Data:', data);  // Debugging: Ausgabe der Daten
-
-        return data.map(entry => {
-            let utilization = parseFloat(entry.utilization);
-            return utilization >= 90 ? 100 : utilization;  // Setze auf 100% bei >= 90%
-        });
+    // Für 72-Stunden-Ansicht
+    if (timeframe === '72h') {
+        return data.map(entry => parseFloat(entry.utilization));
     }
 }
 
@@ -188,22 +196,25 @@ function updateChart(timeframe) {
     if (timeframe === 'day') {
         parkhausAuslastungChart.data.labels = dayLabels;
         parkhausAuslastungChart.options.scales.x.title.text = 'Stunden des Tages (1-24)';
-    } else if (timeframe === 'week') {
-        parkhausAuslastungChart.data.labels = weekLabels;
-        parkhausAuslastungChart.options.scales.x.title.text = 'Tage und Stunden der Woche';
+    } else if (timeframe === '72h') {
+        const labels = generate72hLabels();
+        parkhausAuslastungChart.data.labels = labels;
+        parkhausAuslastungChart.options.scales.x.title.text = 'Letzte 72 Stunden';
     }
-    parkhausAuslastungChart.update();  // Den Chart aktualisieren
+    parkhausAuslastungChart.update();
 }
 
 // Event-Listener für die Buttons
-document.getElementById('btnDay').addEventListener('click', async function () {
-    await loadData('day');
-    updateChart('day');
-});
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('btnDay').addEventListener('click', async function () {
+        await loadData('day');
+        updateChart('day');
+    });
 
-document.getElementById('btnWeek').addEventListener('click', async function () {
-    await loadData('week');
-    updateChart('week');
+    document.getElementById('btnWeek').addEventListener('click', async function () {
+        await loadData('72h');
+        updateChart('72h');
+    });
 });
 
 // Daten laden und Chart aktualisieren

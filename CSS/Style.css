@@ -81,7 +81,7 @@ header img {
 .chart-container {
   width: 100%;
   max-width: 1200px;  /* Begrenzung der maximalen Breite */
-  height: 100vh;  /* Höhe auf 75% des Viewports setzen */
+  height: 80vh;  /* Höhe auf 75% des Viewports setzen */
   max-height: 800px;  /* Maximale Höhe festlegen */
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
