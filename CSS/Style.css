@@ -152,15 +152,16 @@ header h2 {
   border: 0.1rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
 }
 
-@media only screen and (max-width: 800px) and (orientation: landscape) {
+@media (max-width: 800px) and (orientation: landscape) {
   .chart-container {
     height: 95vh;
   }
-
-  /* Responsive Chart Canvas */
-#parkhausAuslastungChart {
-  height: 80vh;
 }
+
+@media (max-width: 800px) and (orientation: portrait) {
+  .chart-container {
+    height: 70vh;
+  }
 }
 
 
