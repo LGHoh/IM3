@@ -105,10 +105,13 @@ header img {
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
   border: 1px solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
+<<<<<<< HEAD
   max-width: 90%;
   max-height: 70%;
   margin: 0 auto;
   box-sizing: border-box;
+=======
+>>>>>>> 41b5fabee974ed556ae9cc191585c618864b000d
 }
 
 /* Responsive Chart Canvas */
