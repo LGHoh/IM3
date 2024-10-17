@@ -148,8 +148,7 @@ header h2 {
   min-width: 95%;  /* Increased max-width for a broader appearance */
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
-  box-sizing: border-box;
-  border: 0.1rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
+  box-sizing: border-box; 
 }
 
 @media (max-width: 800px) and (orientation: landscape) {
@@ -180,9 +179,9 @@ header h2 {
   padding: 1rem;
   flex: 3 1 65%; /* Flex-Eigenschaften für Responsive Verhalten */
   justify-content: center;
-  padding: 1rem;
-  margin: 2rem;
-
+  margin-left: 2rem;
+  margin-right:2rem;
+  margin-bottom: 1rem;
 }
 
 /* Footer Styling */
@@ -298,16 +297,23 @@ input {
   border-radius: 0.7rem;
   border: 0.15rem solid var(--Dämmerung);
   flex: 1 1 30%; /* Flex-Eigenschaften für Responsive Verhalten */
-  text-align: center;
+  text-align: left;
   align-content: center;
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+.GrafikButton {
+border-top: 0.15rem solid var(--Himmel);
+border-bottom: 0.15rem solid var(--Himmel);
+
 }
 /* Text-Box */
 .contentText {
   background-color: rgba(159, 52, 188, 0.3);
-  border: 0.2rem solid var(--Dämmerung);
+  border: 0.15rem solid var(--Dämmerung);
   border-radius: 0.7rem;
   padding: 1rem;
   flex: 3 1 65%; /* Flex-Eigenschaften für Responsive Verhalten */

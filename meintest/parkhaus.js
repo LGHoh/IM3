@@ -291,7 +291,7 @@ async function generateInterpretations() {
 
         if (isFull) {
             interpretations.push(
-                `<b>Parkhaus ${dataset.label}</b> ist zum Zeitpunkt <b>${fullTime}</b> voll.`
+                `<b>Parkhaus ${dataset.label}</b> war zuletzt zum Zeitpunkt <b>${fullTime}</b> voll.`
             );
         }
     }));
