@@ -88,7 +88,7 @@ body {
   z-index: 99;
   padding: 1rem 0;  /* Top and bottom padding for spacing */
   border-bottom: 0.1rem solid var(--Himmel);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* Header Styling */
@@ -193,7 +193,6 @@ footer {
   margin-bottom: 10px; /* Etwas Abstand unter dem Logo hinzufügen */
 }
 
-
 .footer-links a {
   text-decoration: none;
   color: var(--Sonne);
@@ -244,14 +243,6 @@ input {
 }
 
 /* Klassen */
-.überschrift {
-  text-align: left;
-  color: white;
-  background-color: var(--Dämmerung);
-  border-radius: 1rem;
-  border: 1px solid white;
-  padding: 1rem;
-}
 
 /* Container for Nachrichten */
 .nachrichten {
