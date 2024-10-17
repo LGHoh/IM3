@@ -79,6 +79,19 @@ body {
 }
 
 
+/* Sticky Header */
+.sticky-header {
+  background-color: rgb(10, 0, 52);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Full width for the header */
+  z-index: 99;
+  padding: 1rem 0;  /* Top and bottom padding for spacing */
+  border-bottom: 0.1rem solid var(--Himmel);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
 
 /* Header Styling */
 header {
@@ -106,9 +119,6 @@ header h2 {
 }
 
 /* Add this CSS to ensure content flows below the header */
-.content-wrapper {
-  margin-top: 80px; /* Equal to the header height to prevent overlap */
-}
 
 /* Responsive Header */
 @media (max-width: 768px) {
@@ -126,6 +136,10 @@ header h2 {
   header h2 {
     font-size: 1rem; /* Resize text for smaller screens */
   }
+  .content-wrapper {
+    margin-top: 60px; /* Equal to the header height to prevent overlap */
+  }
+  
 }
 
 /* Chart Container für bessere Steuerung des Diagramms */
@@ -135,7 +149,7 @@ header h2 {
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
-  border: 0.3rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
+  border: 0.1rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
 }
 
 @media only screen and (max-width: 800px) and (orientation: landscape) {
@@ -170,7 +184,8 @@ header h2 {
 
 /* Footer Styling */
 footer {
-  background-color: var(--Wald);
+  background-color: rgba(159, 52, 188, 0.1);
+  border-top: 0.1rem solid var(--Himmel);
   color: var(--Sonne);
   text-align: center;
   padding: 1rem;
@@ -192,31 +207,13 @@ footer {
   margin-bottom: 10px; /* Etwas Abstand unter dem Logo hinzufügen */
 }
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;  /* Zeige die Links nebeneinander an */
-  gap: 20px;  /* Fügt Abstand zwischen den Links hinzu */
-  justify-content: center; /* Zentriert die Links */
-}
-
-.footer-links li {
-  margin: 0; /* Entferne vorherige linke und rechte Abstände */
-}
-
 .footer-links a {
   text-decoration: none;
   color: var(--Sonne);
   transition: color 0.3s;
 }
 
-.footer-links a:hover {
-  color: #D2BE64;  /* Helle Farbe für den Hover-Effekt */
-}
-
 .footer-bottom {
-  margin-top: 15px;
   font-size: 0.9rem;
   text-align: center;
 }
@@ -260,14 +257,6 @@ input {
 }
 
 /* Klassen */
-.überschrift {
-  text-align: left;
-  color: white;
-  background-color: var(--Dämmerung);
-  border-radius: 1rem;
-  border: 1px solid white;
-  padding: 1rem;
-}
 
 /* Container for Nachrichten */
 .nachrichten {
