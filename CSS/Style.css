@@ -101,13 +101,14 @@ header img {
 /* Chart Container für bessere Steuerung des Diagramms */
 .chart-container {
   width: 100%;
-  max-width: 1200px;  /* Begrenzung der maximalen Breite */
-  height: 80vh;  /* Höhe auf 75% des Viewports setzen */
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
   border: 1px solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
-  padding: 3rem 7rem 3rem 7rem;
+  max-width: 90%;
+  max-height: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Responsive Chart Canvas */
@@ -116,16 +117,7 @@ header img {
   height: 100%;  
 }
 
-/* Flexbox Container für den Chart */
-.chart-container {
-  width: 100%;
-  max-width: 90%;
-  max-height: 70%;
-  margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-}
+
 
 /* ------------------------------Buttons--------------------- */
 button {
@@ -275,4 +267,72 @@ input {
 .parkhausAuslastungChart{
   width: 100%;
   height: 100%;
+}
+
+/* Footer Styling */
+.footer {
+  background-color: var(--VerlauffarbeHellblau);  /* Verwendung deiner Farbvariablen für einen dunklen Hintergrund */
+  color: var(--Sonne);  /* Schriftfarbe passend zum Hintergrund */
+  padding: 20px 2.5%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--Sonne);
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #D2BE64;  /* Helle Farbe für den Hover-Effekt */
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);  /* Zoom-Effekt beim Hovern */
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+  font-size: 0.9rem;
 }
