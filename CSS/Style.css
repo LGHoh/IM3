@@ -289,13 +289,23 @@ input {
 .contentTitel {
   background-color: rgba(159, 52, 188, 0.3);
   border-radius: 0.7rem;
-  border: 0.2rem solid var(--Dämmerung);
+  border: 0.15rem solid var(--Dämmerung);
   flex: 1 1 30%; /* Flex-Eigenschaften für Responsive Verhalten */
   text-align: center;
   align-content: center;
   padding: 1rem;
 }
-
+.contentAuflistung {
+  background-color: rgba(159, 52, 188, 0.3);
+  border-radius: 0.7rem;
+  border: 0.15rem solid var(--Dämmerung);
+  flex: 1 1 30%; /* Flex-Eigenschaften für Responsive Verhalten */
+  text-align: center;
+  align-content: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 /* Text-Box */
 .contentText {
   background-color: rgba(159, 52, 188, 0.3);
