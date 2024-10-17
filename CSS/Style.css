@@ -174,17 +174,14 @@ header h2 {
 
 /* Interpretation Container */
 #interpretation-container {
-  background-color: rgba(0, 0, 0, 0.1); /* Nutze eine passende Hintergrundfarbe */
-  padding: 15px;  /* Füge Padding hinzu, um den Text vom Rand fernzuhalten */
-  margin-top: 0;  /* Entferne unerwünschte Abstände oben */
-  margin-bottom: 0;  /* Entferne unerwünschte Abstände unten */
-  text-align:center; /* Text linksbündig für bessere Lesbarkeit */
-  box-sizing: border-box;
-  margin-top: 3rem;
-  text-decoration: none;
-
-
-  border: 5px solid red;
+  background-color: rgba(159, 52, 188, 0.3);
+  border: 0.2rem solid var(--Dämmerung);
+  border-radius: 0.7rem;
+  padding: 1rem;
+  flex: 3 1 65%; /* Flex-Eigenschaften für Responsive Verhalten */
+  justify-content: center;
+  padding: 1rem;
+  margin: 2rem;
 
 }
 

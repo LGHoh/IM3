@@ -278,13 +278,14 @@ async function generateInterpretations() {
 
         if (isFull) {
             interpretations.push(
-                `- Parkhaus ${dataset.label} ist zum Zeitpunkt (${fullTime}) voll.`
+                `Parkhaus ${dataset.label} ist zum Zeitpunkt (${fullTime}) voll.`
             );
         }
     }));
 
     const interpretationContainer = document.getElementById('interpretation-container');
-    interpretationContainer.innerHTML = interpretations.length > 0 ? interpretations.join('<br>') : 'Keine besonderen Hinweise für die Auslastung.';
+    let interpretationsHTML = interpretations.length > 0 ? interpretations.join('<br>') : 'Keine besonderen Hinweise für die Auslastung.';
+    interpretationContainer.innerHTML = "<p class='auflistungpp'"+interpretationsHTML+"</p>";
 }
 
 // Event-Listener für die Buttons
