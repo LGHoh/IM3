@@ -154,10 +154,16 @@ const config = {
                 title: {
                     display: true,
                     text: 'Auslastung (%)',
-                    color: 'white'
+                    color: 'white',
+                    font: {
+                        weight: 'bold' // Make the Y-axis label bold
+                    }
                 },
                 ticks: {
-                    color: 'rgba(200, 200, 200, 0.8)'
+                    color: 'rgba(200, 200, 200, 0.8)',
+                    font: {
+                        weight: 'bold' // Make the Y-axis ticks bold
+                    }
                 },
                 grid: {
                     color: 'rgba(200, 200, 200, 0.3)',
@@ -169,12 +175,18 @@ const config = {
                 title: {
                     display: true,
                     text: 'Stunden des Tages',
-                    color: 'white'
+                    color: 'white',
+                    font: {
+                        weight: 'bold' // Make the X-axis label bold
+                    }
                 },
                 ticks: {
                     color: 'rgba(220, 220, 220, 1)',
                     autoSkip: true,
-                    maxTicksLimit: 6  // Weniger Labels bei kleineren Bildschirmen
+                    maxTicksLimit: 6,  // Weniger Labels bei kleineren Bildschirmen
+                    font: {
+                        weight: 'bold' // Make the X-axis ticks bold
+                    }
                 },
                 grid: {
                     color: 'rgba(200, 200, 200, 0.3)',
@@ -198,6 +210,7 @@ const config = {
         }
     }
 };
+
 
 // Initialisiere den Chart
 const parkhausAuslastungChart = new Chart(
@@ -278,14 +291,16 @@ async function generateInterpretations() {
 
         if (isFull) {
             interpretations.push(
-                `- Parkhaus ${dataset.label} ist zum Zeitpunkt (${fullTime}) voll.`
+                `<b>Parkhaus ${dataset.label}</b> ist zum Zeitpunkt <b>${fullTime}</b> voll.`
             );
         }
     }));
 
     const interpretationContainer = document.getElementById('interpretation-container');
-    interpretationContainer.innerHTML = interpretations.length > 0 ? interpretations.join('<br>') : 'Keine besonderen Hinweise für die Auslastung.';
+    let interpretationsHTML = interpretations.length > 0 ? interpretations.join('<br>') : 'Keine besonderen Hinweise für die Auslastung.';
+    interpretationContainer.innerHTML = `<p class='auflistungpp'>${interpretationsHTML}</p>`;
 }
+
 
 // Event-Listener für die Buttons
 document.getElementById('btnDay').addEventListener('click', async function () {
