@@ -78,6 +78,7 @@ body {
   padding-top: calc(1rem + 3rem); /* Prevent content overlap */
 }
 
+
 /* Sticky Header */
 .sticky-header {
   background-color: rgb(10, 0, 52);
@@ -90,6 +91,7 @@ body {
   border-bottom: 0.1rem solid var(--Himmel);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
+
 
 /* Header Styling */
 header {
@@ -132,7 +134,7 @@ header h2 {
   }
 
   header h2 {
-    font-size: 1.4rem; /* Resize text for smaller screens */
+    font-size: 1rem; /* Resize text for smaller screens */
   }
   .content-wrapper {
     margin-top: 60px; /* Equal to the header height to prevent overlap */
@@ -143,12 +145,24 @@ header h2 {
 /* Chart Container für bessere Steuerung des Diagramms */
 .chart-container {
   width: 100%;  /* Set to 100% to occupy full available width */
-  max-width: 80%;  /* Increased max-width for a broader appearance */
+  min-width: 95%;  /* Increased max-width for a broader appearance */
   margin: 0 auto;  /* Zentrieren des Containers */
   padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
   border: 0.1rem solid var(--Himmel);  /* Einen dünnen Rahmen hinzufügen */
 }
+
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+  .chart-container {
+    height: 95vh;
+  }
+
+  /* Responsive Chart Canvas */
+#parkhausAuslastungChart {
+  height: 80vh;
+}
+}
+
 
 /* Responsive Chart Canvas */
 #parkhausAuslastungChart {
