@@ -7,60 +7,32 @@
     <link rel="stylesheet" href="/CSS/Style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
 
-    <!-- Header mit Menü -->
-    <header class="menu">
-        <div class="header-content">
-            <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
-            <h2>Zürich</h2>
+  <body>
+      <header class="menu">
+        <img src="/Logo/Peakendsvg.svg" alt="Logo von Peakend">
+        <h2>Zürich</h2>
+      </header>
+  <!-- Chart Container -->
+      <section id="sectiontop" class="section">
+        <!-- Nachrichtenteil -->
+        <div class="nachrichten">
+            <div class="contentlinks">
+              <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit Du schon vorher anreisen kannst, um einen Platz zu finden.</p>
+            </div>
+
+            <div class="contentrechts">
+              <h2>Auslastung </h2>
+            </div>
         </div>
-    </header>
-
+     </section>
     <!-- Chart Container -->
-    <section id="section2" class="section">
-        <h2>Momentane Auslastung</h2>
-        <p>Hier findest du die aktuelle Auslastung der Parkhäuser in Zürich.</p>
-
-        <div class="chart-container">
-          <button id="btnDay">Tag</button>
-          <button id="btnWeek">72h</button>
-          <canvas id="parkhausAuslastungChart"></canvas>
-        </div>
-    </section>
-
-    <!-- Nachrichtenteil -->
-    <div class="nachrichten">
-        <div class="contentlinks">
-            <p>Einen Parkplatz in Zürich zu finden ist schwer. Deshalb zeigt dir Peakend die Peaks in den Parkhäusern, damit du schon vorher anreisen kannst, um einen Platz zu finden.</p>
-        </div>
-        <div class="contentrechts">
-            <p>Peakend zeigt dir die Auslastung der Parkhäuser in Echtzeit.</p>
-        </div>
+    <div class="chart-container">
+        <button id="btnDay">Letzte 24h</button>
+        <button id="btnWeek">Letzte 72h</button>
+        <canvas id="parkhausAuslastungChart"></canvas>
     </div>
-
-    <!-- Script -->
     <script src="parkhaus.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Sicherstellen, dass der DOM vollständig geladen ist, bevor die Event-Listener hinzugefügt werden.
-            const btnDay = document.getElementById('btnDay');
-            const btnWeek = document.getElementById('btnWeek');
+  </body>
 
-            if (btnDay && btnWeek) {
-                btnDay.addEventListener('click', async function () {
-                    await loadData('day');
-                    updateChart('day');
-                });
-
-                btnWeek.addEventListener('click', async function () {
-                    await loadData('72h');
-                    updateChart('72h');
-                });
-            } else {
-                console.error("Buttons nicht gefunden im DOM.");
-            }
-        });
-    </script>
-</body>
 </html>
