@@ -19,14 +19,12 @@
   --dRot: #BD0000;
 
   /* Schriftart */
-  font-family: Krona One, sans-serif;
+  font-family: 'Krona One', sans-serif;
   color: white;
 }
 
-@font-face {
-  font-family: 'Krona One';
-  src: url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
-}
+/* Schriftart importieren */
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap'); 
 
 h1 {
   font-size: 4rem;
@@ -65,6 +63,7 @@ body {
   padding-left: 2.5%;
   padding-right: 2.5%;
   height: 100%;
+  font-family: 'Krona One', sans-serif; /* Sicherstellen, dass die Schriftart verwendet wird */
 }
 
 header {
@@ -81,15 +80,23 @@ header img {
   height: 5vh;
 }
 
-/* Responsive Chart */
-#parkhausAuslastungChart {
-  width: 100%;  /* Breite des Canvas auf 100% setzen */
-  max-width: 1000px;  /* Maximalbreite */
-  height: auto;  /* Höhe proportional zur Breite */
-  display: block;  /* Block-Element zur Vermeidung von Inline-Effekten */
-  margin: 20px auto;  /* Zentriert */
+/* Chart Container für bessere Steuerung des Diagramms */
+.chart-container {
+  width: 100%;
+  max-width: 1200px;  /* Begrenzung der maximalen Breite */
+  height: 100vh;  /* Höhe auf 75% des Viewports setzen */
+  max-height: 800px;  /* Maximale Höhe festlegen */
+  margin: 0 auto;  /* Zentrieren des Containers */
+  padding: 10px;  /* Etwas Padding für Abstand */
   box-sizing: border-box;
 }
+
+/* Responsive Chart Canvas */
+#parkhausAuslastungChart {
+  width: 100%;  /* Die Breite immer auf 100% setzen */
+  height: 100%;  /* Die Höhe hängt vom Container ab */
+}
+
 
 /* Flexbox Container für den Chart */
 .chart-container {
@@ -177,6 +184,24 @@ input {
   #parkhausAuslastungChart {
       max-width: 100%;  /* Volle Breite bei kleineren Bildschirmen */
   }
+
+  header {
+    flex-direction: column; /* Anpassen, damit Header auf kleinen Bildschirmen besser aussieht */
+    height: auto;
+    padding: 1rem;
+  }
+
+  header img {
+    height: 6vh; /* Größe des Logos anpassen, damit es nicht zu klein wird */
+  }
+
+  .chart-title h1 {
+    font-size: 2rem; /* Verkleinern des Diagramm-Titels für kleinere Bildschirme */
+  }
+
+  .buttons {
+    justify-content: center; /* Buttons zentrieren, um auf mobilen Geräten konsistent auszusehen */
+  }
 }
 
 /* ------------------------------Footer--------------------- */
@@ -231,8 +256,13 @@ footer {
   justify-content: space-between;
   padding: 1rem; /* Added value for padding */
 }
+
 .menu h2 {
   color: var(--Sonne);
   padding-top: 1rem; /* Added value for padding-top */
 }
+
+/* ------------------------------Anordnung-------------------- */
+
+
 

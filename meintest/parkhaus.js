@@ -75,11 +75,14 @@ const data = {
         }
     ]
 };
+
+
 const config = {
     type: 'line',
     data: data,
     options: {
         responsive: true,
+        maintainAspectRatio: false, // Verhältnis nicht beibehalten, damit das Diagramm sich an den Container anpasst
         plugins: {
             legend: {
                 position: 'top',
