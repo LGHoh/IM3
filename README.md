@@ -27,9 +27,4 @@ benutzte Ressourcen:
 ChatGPT
 stackoverflow
 w3schools
-
-
-
-
- Zweck:
-
+chartjs
