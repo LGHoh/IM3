@@ -36,34 +36,84 @@ const generate72hLabels = () => {
     return labels;
 };
 
-// Reduzierte Redundanz im Dataset-Setup
-const datasetInfo = [
-    { label: 'Hard', color: [54, 162, 235], parkhausId: 'zuerichparkhaushardauii' },
-    { label: 'Uszsued', color: [255, 99, 132], parkhausId: 'zuerichparkplatzuszsued' },
-    { label: 'Uni Irchel', color: [75, 192, 192], parkhausId: 'zuerichparkhausuniirchel' },
-    { label: 'Haustalgarten', color: [153, 102, 255], parkhausId: 'zuerichparkhaustalgarten' },
-    { label: 'Opéra', color: [255, 206, 86], parkhausId: 'zuerichparkhausopéra' },
-    { label: 'Urania', color: [54, 162, 235], parkhausId: 'zuerichparkhausurania' },
-    { label: 'Parkside', color: [255, 159, 64], parkhausId: 'zuerichparkhausparkside' },
-    { label: 'Helvetiaplatz', color: [199, 199, 199], parkhausId: 'zuerichparkhaushelvetiaplatz' },
-    { label: 'Jelmoli', color: [75, 192, 192], parkhausId: 'zuerichparkhausjelmoli' }
-];
-
-const datasets = datasetInfo.map(info => ({
-    label: info.label,
-    data: [],
-    borderColor: `rgba(${info.color.join(', ')}, 1)`,
-    backgroundColor: `rgba(${info.color.join(', ')}, 0.2)`,
-    fill: false,
-    parkhausId: info.parkhausId
-}));
-
 // Setup für die Daten
 const data = {
     labels: dayLabels, // Start mit Tagesansicht
-    datasets: datasets
+    datasets: [
+        {
+            label: 'Hard',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(54, 162, 235, 1)', // Blau
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhaushardauii"
+        },
+        {
+            label: 'Uszsued',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(255, 99, 132, 1)', // Rot
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkplatzuszsued"
+        },
+        {
+            label: 'Uni Irchel',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(75, 192, 192, 1)', // Grün
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhausuniirchel"
+        },
+        {
+            label: 'Haustalgarten',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(153, 102, 255, 1)', // Lila
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhaustalgarten"
+        },
+        {
+            label: 'Opéra',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(255, 206, 86, 1)', // Gelb
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhausopéra"
+        },
+        {
+            label: 'Urania',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(54, 162, 235, 1)', // Blau
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhausurania"
+        },
+        {
+            label: 'Parkside',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(255, 159, 64, 1)', // Orange
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhausparkside"
+        },
+        {
+            label: 'Helvetiaplatz',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(199, 199, 199, 1)', // Grau
+            backgroundColor: 'rgba(199, 199, 199, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhaushelvetiaplatz"
+        },
+        {
+            label: 'Jelmoli',
+            data: [], // Hier kommen die API-Daten rein
+            borderColor: 'rgba(75, 192, 192, 1)', // Grün
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: false,
+            parkhausId: "zuerichparkhausjelmoli"
+        }
+    ]
 };
-
 
 const config = {
     type: 'line',
